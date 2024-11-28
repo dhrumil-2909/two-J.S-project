@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Quote Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            
+        }
+
+        .quote-container {
+            text-align: center;
+            background-color: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.2);
+            max-width: 600px;
+           
+        }
+
+        .quote-text {
+            font-size: 28px;
+            margin-bottom: 20px;
+        
+        }
+
+        .author {
+            font-style: italic;
+            font-size: 18px;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        button {
+            padding: 12px 25px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="quote-container">
+        <div class="quote-text" id="quoteDisplay">Click the button to get a quote!</div>
+        <div class="author" id="authorDisplay"></div>
+        <button onclick="generateQuote()">New Quote</button>
+    </div>
+
+</body>
+<script>
+    let quotes = [
+        {
+            text: "The only way to do great work is to love what you do.",
+            author: "Steve Jobs",
+            color: "#FF6B6B"
+        },
+        {
+            text: "All empires are created of blood and fire.",
+            author: "pablo escobar",
+            color: "#4ECDC4"
+        },
+        {
+            text: "Your time is limited, so dont waste it living someone else life.",
+            author: "steve jobs",
+            color: "#45B7D1"
+        },
+        {
+            text: "Be the change you wish to see in the world.",
+            author: "Mahatma Gandhi",
+            color: "#96CEB4"
+        },
+        {
+            text: "In a conflict between the heart and the brain, follow your heart.",
+            author: "swami vivekananda",
+            color: "#D4A5A5"
+        }
+    ];
+
+    let backgroundColors = [
+        "#FFE5E5", "#4962c9","#9549c9 ", "#5f48b5 ","#68b8b9 ",
+    ];
+
+    function generateQuote() {
+        let randomIndex = Math.floor(Math.random() * quotes.length);
+        let randomBgIndex = Math.floor(Math.random() * backgroundColors.length);
+        
+        let quote = quotes[randomIndex];
+        let bgColor = backgroundColors[randomBgIndex];
+
+        // Update quote and author
+        document.getElementById("quoteDisplay").textContent = quote.text;
+        document.getElementById("authorDisplay").textContent = quote.author;
+
+        // Change colors
+        document.getElementById("quoteDisplay").color = quote.color;
+        document.body.style.backgroundColor = bgColor;
+        
+    }
+</script>
+</html>

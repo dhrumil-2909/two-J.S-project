@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Countdown Timer to a Specific Date</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #000000;
+            color: white;
+            text-align: center;
+        }
+        #countdown {
+            font-size: 48px;
+            margin: 20px;
+            padding: 20px;
+            border: 2px solid #053643;
+            border-radius: 10px;
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        .time-unit {
+            display: inline-block;
+            margin: 0 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="countdown">
+        <div class="time-unit" id="days">0</div> Days
+        <div class="time-unit" id="hours">0</div> Hours
+        <div class="time-unit" id="minutes">0</div> Minutes
+        <div class="time-unit" id="seconds">0</div> Seconds
+    </div>
+    <div id="message"></div>
+  <script>
+   let day = document.getElementById('days')
+let hours = document.getElementById('hours')
+let minutes = document.getElementById('minutes')
+let seconds = document.getElementById('seconds')
+
+let targetday =new Date("2025-5-23,24:00:00") ;
+    
+setInterval(() => {
+ 
+    
+    let currtydate = new Date().getTime();
+    let defunt = targetday - currtydate;
+    
+    let leftday = Math.floor(defunt / (1000 * 60 * 60 * 24))
+    let lefthour = Math.floor(defunt % (1000 * 60 * 60 * 24) / (1000 * 60 * 60))
+    let leftminutes = Math.floor(defunt % (1000 * 60 * 60) / (1000 * 60))
+    let leftsecond = Math.floor(defunt % (1000 * 60) / 1000)
+    
+    // console.log(`
+    // day${leftday}
+    // hour${lefthour}
+    // minutes${leftminutes}
+    // secound${leftsecond}
+    // `)
+
+    day.textContent =leftday
+    hours.textContent =lefthour
+    minutes.textContent =leftminutes
+    seconds.textContent =leftsecond
+    }, 1000)
+  </script>
+</body>
+</html>
